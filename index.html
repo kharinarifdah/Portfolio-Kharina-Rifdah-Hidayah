@@ -23,7 +23,7 @@
   --inter:'Inter',sans-serif;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--inter);background:var(--white);color:var(--text);overflow-x:hidden}
+body{font-family:var(--inter);background:var(--gray);color:var(--text);overflow-x:hidden}
 
 /* NAV */
 nav{
@@ -43,7 +43,7 @@ nav{
 #hero{
   background:var(--black);
   display:grid;
-  grid-template-columns:1fr 420px;
+  grid-template-columns:1fr 500px; /* Diperbesar dari 420px */
   gap:0;
   align-items:end;
   padding:0 3rem 0 3rem;
@@ -97,13 +97,13 @@ h1 .pink{color:var(--pink)}
 }
 .hero-right-image img{
   width:100%;
-  max-width:380px;
-  height:75vh;
+  max-width:480px; /* Diperbesar agar foto lebih stand out */
+  height:82vh; /* Dipertinggi */
   object-fit:cover;
   border-radius:24px 24px 0 0;
   border:1px solid rgba(255,255,255,.1);
   border-bottom:none;
-  filter: grayscale(20%) contrast(110%);
+  filter: grayscale(10%) contrast(105%);
 }
 
 /* NEW STATS BAR */
@@ -148,7 +148,7 @@ section{padding:6rem 3rem}
 }
 
 /* ABOUT */
-#about{background:var(--gray)}
+#about{background:var(--white)}
 .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .about-card{
   background:var(--blue);border-radius:24px;padding:2.5rem;
@@ -179,56 +179,80 @@ section{padding:6rem 3rem}
 }
 .about-right p{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
 .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.08);border-radius:16px;overflow:hidden;margin-top:2rem}
-.metric{background:var(--white);padding:1.5rem 1rem;text-align:center}
+.metric{background:var(--gray);padding:1.5rem 1rem;text-align:center}
 .metric-n{font-family:var(--syne);font-size:1.8rem;font-weight:800;color:var(--pink)}
 .metric-l{font-size:.7rem;color:var(--muted);margin-top:.25rem;line-height:1.3}
 
 /* EXPERIENCE */
-#experience{background:var(--white)}
+#experience{background:var(--gray)}
+.exp-list{display:flex; flex-direction:column; gap:1.5rem;}
 .exp-item{
-  display:grid;grid-template-columns:200px 1fr;gap:2.5rem;
-  padding:2rem 0;border-bottom:1px solid rgba(0,0,0,.07);
-  transition:background .15s;cursor:default;
+  display:grid;grid-template-columns:220px 1fr;gap:2.5rem;
+  padding:2rem; background:var(--white); border-radius:20px;
+  border:1px solid rgba(0,0,0,.04); box-shadow:0 4px 15px rgba(0,0,0,.01);
+  position:relative; overflow:hidden; transition:all .3s ease;
 }
-.exp-item:first-child{border-top:1px solid rgba(0,0,0,.07)}
-.exp-item:hover{background:var(--pink-pale);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:12px;border-color:transparent}
-.exp-period{font-size:.72rem;color:var(--muted);font-weight:400;line-height:1.5;margin-bottom:.3rem}
-.exp-co{font-size:.78rem;font-weight:600;color:var(--pink)}
-.exp-loc{font-size:.7rem;color:var(--muted);margin-top:.15rem}
-.exp-role{font-family:var(--syne);font-size:1rem;font-weight:800;color:var(--black);margin-bottom:.5rem}
+.exp-item::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--gray);transition:background .3s ease;
+}
+.exp-item:hover{
+  transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,.05); border-color:transparent;
+}
+.exp-item:hover::before{ background:var(--pink); }
+.exp-period{font-size:.72rem;color:var(--muted);font-weight:500;line-height:1.5;margin-bottom:.4rem; text-transform:uppercase; letter-spacing:.05em;}
+.exp-co{font-size:.85rem;font-weight:700;color:var(--pink)}
+.exp-loc{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+.exp-role{font-family:var(--syne);font-size:1.1rem;font-weight:800;color:var(--black);margin-bottom:.8rem}
 .new-badge{
   display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
   background:var(--pink);color:#fff;padding:.15rem .6rem;border-radius:2rem;margin-left:.5rem;vertical-align:middle;
 }
-.exp-points{list-style:none;display:flex;flex-direction:column;gap:.25rem}
-.exp-points li{font-size:.82rem;color:var(--muted);padding-left:1rem;position:relative;line-height:1.6;font-weight:300}
-.exp-points li::before{content:'—';position:absolute;left:0;color:var(--pink);font-size:.7rem}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.exp-points li{font-size:.85rem;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.6;font-weight:400}
+.exp-points li::before{content:'✦';position:absolute;left:0;color:var(--pink);font-size:.65rem; top:.15rem;}
 
 /* PROJECTS */
-#projects{background:var(--gray)}
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+#projects{background:var(--white)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .proj-card{
   background:var(--white);border-radius:20px;padding:1.75rem;
   border:1px solid rgba(0,0,0,.07);
-  transition:transform .2s,border-color .2s;
+  transition:transform .3s, box-shadow .3s, border-color .3s;
+  display:flex; flex-direction:column;
 }
-.proj-card:hover{transform:translateY(-4px);border-color:var(--pink)}
+.proj-card:hover{transform:translateY(-6px); box-shadow:0 15px 35px rgba(0,0,0,.06); border-color:var(--pink)}
 .proj-card.hero-card{
   grid-column:span 2;
-  background:var(--black);
+  background:var(--black); border:none;
 }
+.proj-img{width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:1.5rem; border:1px solid rgba(0,0,0,.05);}
+.proj-card.hero-card .proj-img{height:300px; border-color:rgba(255,255,255,.1);}
 .proj-num{
   font-family:var(--syne);font-size:.7rem;font-weight:800;
   color:var(--pink);letter-spacing:.08em;margin-bottom:1rem;
 }
 .proj-card.hero-card .proj-num{color:rgba(255,42,122,.8)}
-.proj-card-title{font-family:var(--syne);font-size:1.05rem;font-weight:800;color:var(--black);margin-bottom:.5rem;line-height:1.2}
-.proj-card.hero-card .proj-card-title{color:#fff;font-size:1.3rem}
-.proj-desc{font-size:.8rem;color:var(--muted);line-height:1.65;font-weight:300}
-.proj-card.hero-card .proj-desc{color:rgba(255,255,255,.45)}
-.proj-stats{display:flex;gap:1rem;margin-top:1.25rem;flex-wrap:wrap}
-.ps{font-size:.72rem;font-weight:600;color:var(--blue)}
+.proj-card-title{font-family:var(--syne);font-size:1.15rem;font-weight:800;color:var(--black);margin-bottom:.7rem;line-height:1.2}
+.proj-card.hero-card .proj-card-title{color:#fff;font-size:1.5rem}
+.proj-desc{font-size:.85rem;color:var(--muted);line-height:1.65;font-weight:400; flex-grow:1;}
+.proj-card.hero-card .proj-desc{color:rgba(255,255,255,.5)}
+.proj-stats{display:flex;gap:1rem;margin-top:1.25rem;flex-wrap:wrap; padding-top:1rem; border-top:1px solid rgba(0,0,0,.05);}
+.proj-card.hero-card .proj-stats{border-top-color:rgba(255,255,255,.1);}
+.ps{font-size:.75rem;font-weight:600;color:var(--blue)}
 .proj-card.hero-card .ps{color:#6FA3FF}
+
+/* PHONE MOCKUP */
+.phone-mockup-wrapper{display:flex;justify-content:center;margin:1rem 0 1.5rem 0;}
+.phone-mockup{
+  width:160px; height:320px; border:6px solid #1a1a24; border-radius:24px;
+  overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,.1); background:#f0f0f0; position:relative;
+}
+.phone-mockup::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:40px;height:12px;background:#1a1a24;border-bottom-left-radius:10px;border-bottom-right-radius:10px;z-index:2;
+}
+.phone-mockup img{width:100%; height:100%; object-fit:cover;}
 
 /* AWARDS & CERTS */
 #awards{background:var(--black)}
@@ -239,42 +263,52 @@ section{padding:6rem 3rem}
   margin-top:3rem;margin-bottom:1.5rem;letter-spacing:-.02em;
 }
 .aw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
-.aw-card{background:var(--black);padding:2rem 1.75rem;transition:background .2s}
-.aw-card:hover{background:#111}
+a.aw-card{
+  background:var(--black);padding:2rem 1.75rem;transition:background .2s, transform .2s;
+  text-decoration:none; display:block; cursor:pointer;
+}
+a.aw-card:hover{background:#111; transform:scale(1.02); z-index:2; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.5);}
 .aw-rank{font-family:var(--syne);font-size:2.5rem;font-weight:800;color:var(--pink);line-height:1;margin-bottom:.75rem}
-.aw-title{font-size:.85rem;font-weight:500;color:#fff;margin-bottom:.35rem;line-height:1.4}
-.aw-org{font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.5;font-weight:300}
+.aw-title{font-size:.85rem;font-weight:600;color:#fff;margin-bottom:.4rem;line-height:1.4}
+.aw-org{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;font-weight:400}
+
+/* FULL WIDTH AWARDS */
+a.aw-card.aw-card-full{
+  grid-column: 1 / -1; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
+}
+a.aw-card.aw-card-full .aw-rank{margin-bottom:0;}
+a.aw-card.aw-card-full .aw-details{text-align:right;}
 
 /* SKILLS */
-#skills{background:var(--white)}
+#skills{background:var(--gray)}
 .sk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .sk-group{margin-bottom:2rem}
-.sk-cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);font-weight:600;margin-bottom:.85rem}
+.sk-cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:.85rem}
 .sk-pills{display:flex;flex-wrap:wrap;gap:.5rem}
 .sk-pill{
   display:inline-flex;align-items:center;gap:.4rem;
-  font-size:.75rem;padding:.35rem .9rem;border-radius:2rem;
-  border:1px solid rgba(0,0,0,.12);color:var(--text);
-  font-weight:500;transition:all .15s;cursor:default;
-  background:var(--white);
+  font-size:.75rem;padding:.4rem 1rem;border-radius:2rem;
+  border:1px solid rgba(0,0,0,.08);color:var(--text);
+  font-weight:500;transition:all .2s;cursor:default;
+  background:var(--white); box-shadow:0 2px 5px rgba(0,0,0,.02);
 }
-.sk-pill img{width:14px;height:14px;opacity:0.8;transition:all .15s;}
-.sk-pill:hover{background:var(--pink);border-color:var(--pink);color:#fff}
+.sk-pill img{width:14px;height:14px;opacity:0.7;transition:all .2s;}
+.sk-pill:hover{background:var(--pink);border-color:var(--pink);color:#fff; transform:translateY(-2px); box-shadow:0 5px 15px rgba(255,42,122,.2);}
 .sk-pill:hover img{filter:brightness(0) invert(1);opacity:1;}
 .sk-right{}
 .sk-quote{
-  font-family:var(--syne);font-size:1.5rem;font-weight:800;
-  color:var(--black);line-height:1.25;margin-bottom:2rem;letter-spacing:-.02em;
+  font-family:var(--syne);font-size:1.6rem;font-weight:800;
+  color:var(--black);line-height:1.3;margin-bottom:2.5rem;letter-spacing:-.02em;
 }
 .sk-quote span{color:var(--pink)}
 .lang-row{
   display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 0;border-bottom:1px solid rgba(0,0,0,.07);
+  padding:1.2rem 0;border-bottom:1px solid rgba(0,0,0,.05);
 }
-.lang-name{font-size:.85rem;font-weight:500;color:var(--black)}
+.lang-name{font-size:.9rem;font-weight:600;color:var(--black)}
 .lang-tag{
-  font-size:.7rem;padding:.25rem .75rem;border-radius:2rem;
-  background:var(--pink-pale);color:var(--pink);font-weight:600;
+  font-size:.7rem;padding:.3rem .8rem;border-radius:2rem;
+  background:var(--pink-pale);color:var(--pink);font-weight:700;
 }
 
 /* CV BANNER CTA */
@@ -289,27 +323,27 @@ section{padding:6rem 3rem}
   margin:0 auto;
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.1);
-  padding:3rem;
+  padding:3.5rem;
   border-radius:24px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 .cv-cta-icon{
-  width:50px;height:50px;background:rgba(255,42,122,.15);color:var(--pink);
+  width:55px;height:55px;background:rgba(255,42,122,.15);color:var(--pink);
   border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;margin:0 auto 1.5rem auto;
+  margin:0 auto 1.5rem auto;
 }
 .cv-cta-box h2{
-  font-family:var(--syne);font-size:2rem;color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em;
+  font-family:var(--syne);font-size:2.2rem;color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em;
 }
 .cv-cta-box p{
-  color:rgba(255,255,255,0.6);font-size:.9rem;line-height:1.6;margin-bottom:2rem;
+  color:rgba(255,255,255,0.6);font-size:.95rem;line-height:1.6;margin-bottom:2.5rem;
 }
 .btn-cv{
   display:inline-flex;align-items:center;gap:.75rem;
-  background:var(--pink);color:#fff;padding:.9rem 2rem;border-radius:2rem;
-  font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;
+  background:var(--pink);color:#fff;padding:1rem 2.5rem;border-radius:2rem;
+  font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;
 }
-.btn-cv:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,42,122,.3);}
+.btn-cv:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,42,122,.3);}
 
 /* CONTACT */
 #contact{background:var(--blue)}
@@ -319,26 +353,40 @@ section{padding:6rem 3rem}
 .ct-links{display:flex;flex-direction:column;gap:.75rem}
 .ct-link{
   display:flex;justify-content:space-between;align-items:center;
-  background:rgba(255,255,255,.1);border-radius:14px;padding:1.1rem 1.25rem;
-  text-decoration:none;border:1px solid rgba(255,255,255,.12);
-  transition:background .2s,transform .15s;
+  background:rgba(255,255,255,.05);border-radius:16px;padding:1.25rem 1.5rem;
+  text-decoration:none;border:1px solid rgba(255,255,255,.1);
+  transition:all .2s;
 }
-.ct-link:hover{background:rgba(255,255,255,.18);transform:translateX(4px)}
-.ct-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.45);font-weight:500}
-.ct-val{font-size:.88rem;color:#fff;margin-top:.1rem;font-weight:400}
-.ct-arrow{color:rgba(255,255,255,.4);font-size:1rem}
+.ct-link:hover{background:rgba(255,255,255,.15);transform:translateX(5px); border-color:rgba(255,255,255,.2);}
+.ct-label{
+  font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.5);font-weight:600; display:flex; align-items:center; gap:8px;
+}
+.ct-val{font-size:.9rem;color:#fff;margin-top:.3rem;font-weight:400}
+.ct-arrow{color:rgba(255,255,255,.4);font-size:1.2rem; font-weight:300;}
 .avail{
-  margin-top:1rem;background:rgba(255,255,255,.1);border-radius:14px;
-  padding:1rem 1.25rem;border:1px solid rgba(255,255,255,.12);
-  display:flex;align-items:center;gap:.75rem;
+  margin-top:1.5rem;background:rgba(255,255,255,.1);border-radius:16px;
+  padding:1.2rem 1.5rem;border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;gap:1rem;
 }
-.avail-dot{width:8px;height:8px;border-radius:50%;background:#FF2A7A;flex-shrink:0}
-.avail-text{font-size:.82rem;color:rgba(255,255,255,.8);font-weight:400}
+.avail-dot{width:10px;height:10px;border-radius:50%;background:#FF2A7A;flex-shrink:0; box-shadow:0 0 10px rgba(255,42,122,0.6);}
+.avail-text{font-size:.85rem;color:rgba(255,255,255,.9);font-weight:500}
 
 /* FOOTER */
 footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center}
-.f-name{font-family:var(--syne);font-size:.9rem;font-weight:800;color:rgba(255,255,255,.3)}
-.f-copy{font-size:.72rem;color:rgba(255,255,255,.18)}
+.f-name{font-family:var(--syne);font-size:.9rem;font-weight:800;color:rgba(255,255,255,.4)}
+.f-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
+
+/* WA FLOATING BUTTON */
+.wa-float{
+  position:fixed; bottom:30px; right:30px; width:65px; height:65px;
+  background:#25D366; color:#fff; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(37,211,102,0.4); z-index:100;
+  transition:all .3s ease; text-decoration:none;
+}
+.wa-float:hover{transform:scale(1.1) translateY(-5px); box-shadow:0 10px 25px rgba(37,211,102,0.6);}
+.wa-float svg{width:36px; height:36px; fill:currentColor;}
 
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
@@ -347,17 +395,21 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   .hero-badge{margin:0 auto 2rem auto;}
   .hero-sub{margin:0 auto 2.5rem auto;}
   .hero-btns{justify-content:center;}
-  .hero-right-image img{height:50vh;max-width:300px;margin:0 auto;}
+  .hero-right-image img{height:55vh;max-width:380px;margin:0 auto;}
   .stats-bar{grid-template-columns:repeat(2,1fr);display:grid;padding:2rem 1.5rem;gap:1.5rem;}
   section{padding:4rem 1.5rem}
   .about-wrap,.sk-wrap,.ct-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .exp-item{grid-template-columns:1fr;gap:1rem; padding:1.5rem;}
   .proj-grid{grid-template-columns:1fr}
   .proj-card.hero-card{grid-column:span 1}
   .aw-grid{grid-template-columns:1fr}
-  .exp-item{grid-template-columns:1fr;gap:.5rem}
+  a.aw-card.aw-card-full{flex-direction:column; text-align:center; align-items:center;}
+  a.aw-card.aw-card-full .aw-details{text-align:center;}
   .cv-cta-section{padding:4rem 1.5rem;}
   .cv-cta-box{padding:2rem;}
   footer{padding:1.5rem;flex-direction:column;gap:.5rem;text-align:center}
+  .wa-float{bottom:20px; right:20px; width:55px; height:55px;}
+  .wa-float svg{width:30px; height:30px;}
 }
 </style>
 </head>
@@ -386,15 +438,15 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     </div>
   </div>
   <div class="hero-right-image">
+    <!-- Foto hero sudah diperbesar dimensinya via CSS -->
     <img src="Kharina Rifdah Hidayah.jpg" alt="Kharina Rifdah Hidayah">
   </div>
 </section>
 
-<!-- Reorganized Stats Bar -->
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-n">100+</div><div class="stat-l">Team Members Led</div></div>
   <div class="stat-item"><div class="stat-n">3.70</div><div class="stat-l">GPA / 4.00</div></div>
-  <div class="stat-item"><div class="stat-n">+3,500%</div><div class="stat-l">Revenue Growth[cite: 1]</div></div>
+  <div class="stat-item"><div class="stat-n">+3,500%</div><div class="stat-l">Revenue Growth</div></div>
   <div class="stat-item"><div class="stat-n">14M+</div><div class="stat-l">IDR Revenue</div></div>
 </div>
 
@@ -413,7 +465,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       <p>Marketing Management Undergraduate<br>Universitas Negeri Surabaya · 2023–2027</p>
       
       <p class="courses">
-        <strong>Relevant Courses[cite: 1]:</strong> Marketing Management[cite: 1], Sales Management[cite: 1], E-commerce[cite: 1], International Business[cite: 1], Microeconomics[cite: 1], Macroeconomics[cite: 1], Monetary Economics[cite: 1].
+        <strong>Relevant Courses:</strong> Marketing Management, Sales Management, E-commerce, International Business, Microeconomics, Macroeconomics, Monetary Economics.
       </p>
 
       <div class="about-pills">
@@ -458,18 +510,17 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <!-- NEW DATA FROM CV -->
     <div class="exp-item">
       <div>
-        <div class="exp-period">Feb 2025 – May 2025[cite: 1]</div>
-        <div class="exp-co">PT Pelindo Jasa Maritim Area Jawa I[cite: 1]</div>
-        <div class="exp-loc">Surabaya[cite: 1]</div>
+        <div class="exp-period">Feb 2025 – May 2025</div>
+        <div class="exp-co">PT Pelindo Jasa Maritim Area Jawa I</div>
+        <div class="exp-loc">Surabaya</div>
       </div>
       <div>
-        <div class="exp-role">Ship Service Intern[cite: 1]</div>
+        <div class="exp-role">Ship Service Intern</div>
         <ul class="exp-points">
-          <li>Assisted ship service operations and administrative processes, managing 20+ operational documents weekly[cite: 1].</li>
-          <li>Coordinated data documentation with 5 internal stakeholders to maintain service efficiency[cite: 1].</li>
+          <li>Assisted ship service operations and administrative processes, managing 20+ operational documents weekly.</li>
+          <li>Coordinated data documentation with 5 internal stakeholders to maintain service efficiency.</li>
         </ul>
       </div>
     </div>
@@ -481,7 +532,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
         <div class="exp-loc">Surabaya</div>
       </div>
       <div>
-        <div class="exp-role">Co-Founder & CMO</div>
+        <div class="exp-role">Co-Founder & Chief Marketing Officer</div>
         <ul class="exp-points">
           <li>Grew community to 5,000+ members in 3 months through digital campaigns</li>
           <li>Organized 6+ monthly events; gained 1,000+ followers in Month 1</li>
@@ -560,6 +611,8 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <div class="proj-card hero-card">
       <div class="proj-num">01 — FEATURED</div>
       <div class="proj-card-title">Bootcamp Excel for Accounting</div>
+      <!-- Gambar Placeholder -->
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Bootcamp Project" class="proj-img">
       <div class="proj-desc">National online bootcamp organized end-to-end. Handled marketing, partnerships, logistics, and multi-team coordination under Teman Ambiss.</div>
       <div class="proj-stats">
         <span class="ps">1,400+ participants</span>
@@ -571,6 +624,8 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <div class="proj-card">
       <div class="proj-num">02</div>
       <div class="proj-card-title">Fluentify Community Growth</div>
+      <!-- Gambar Placeholder -->
+      <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Community Growth" class="proj-img">
       <div class="proj-desc">Full growth strategy for English-learning community — campaigns, events, and brand voice built from scratch.</div>
       <div class="proj-stats">
         <span class="ps" style="color:var(--pink)">5,000+ members in 3 months</span>
@@ -580,6 +635,12 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <div class="proj-card">
       <div class="proj-num">03</div>
       <div class="proj-card-title">Beautiful Path — Shopee</div>
+      <!-- Mockup HP Placeholder -->
+      <div class="phone-mockup-wrapper">
+        <div class="phone-mockup">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=400" alt="App Screen Mockup">
+        </div>
+      </div>
       <div class="proj-desc">Built a marketplace business with paid ads, flash sales, and creative content. Star Seller within the first month.</div>
       <div class="proj-stats">
         <span class="ps" style="color:var(--pink)">5,000+ sales · 4.9★</span>
@@ -591,86 +652,91 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 
 <section id="awards">
   <div class="s-label">Recognition</div>
-  <div class="s-title" style="margin-bottom:0;">Honors & Validation</div>
+  <div class="s-title" style="margin-bottom:0;">Awards & Certifications</div>
   
   <div class="ac-header">Awards</div>
   <div class="aw-grid">
-    <div class="aw-card">
+    <!-- Setiap card sekarang berupa link <a>, Anda bisa mengganti href dengan path dokumen Anda -->
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">1st</div>
       <div class="aw-title">National BMC Competition</div>
       <div class="aw-org">Management Creativity Festival, USK · 2025</div>
-    </div>
-    <div class="aw-card">
+    </a>
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">★</div>
       <div class="aw-title">Best Intern — Product Management</div>
       <div class="aw-org">Teman Ambiss · 2024</div>
-    </div>
-    <div class="aw-card">
+    </a>
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">3rd</div>
       <div class="aw-title">Management Business Competition (MBION)</div>
       <div class="aw-org">HMJ Management, UNESA · 2024</div>
-    </div>
-    <!-- NEW AWARDS FROM CV -->
-    <div class="aw-card">
-      <div class="aw-rank">18th <span style="font-size:0.4em;vertical-align:top;">[cite: 1]</span></div>
-      <div class="aw-title">National Senior High School Mathematics Olympiad[cite: 1]</div>
-      <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2021[cite: 1]</div>
-    </div>
-    <div class="aw-card">
-      <div class="aw-rank">9th <span style="font-size:0.4em;vertical-align:top;">[cite: 1]</span></div>
-      <div class="aw-title">National Senior High School Economics Olympiad[cite: 1]</div>
-      <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2020[cite: 1]</div>
-    </div>
+    </a>
+    
+    <!-- AWARDS 18th & 9th FULL KESAMPING -->
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card aw-card-full">
+      <div class="aw-rank">18th</div>
+      <div class="aw-details">
+        <div class="aw-title">National Senior High School Mathematics Olympiad</div>
+        <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2021</div>
+      </div>
+    </a>
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card aw-card-full">
+      <div class="aw-rank">9th</div>
+      <div class="aw-details">
+        <div class="aw-title">National Senior High School Economics Olympiad</div>
+        <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2020</div>
+      </div>
+    </a>
   </div>
 
   <div class="ac-header">Certifications</div>
   <div class="aw-grid">
-    <div class="aw-card">
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">B2</div>
       <div class="aw-title">EF SET English Certificate</div>
       <div class="aw-org">Upper Intermediate · 2025</div>
-    </div>
-    <div class="aw-card">
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">SEO</div>
-      <div class="aw-title">Search Engine Optimization[cite: 1]</div>
-      <div class="aw-org">eMarketing Institute · 2025[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Search Engine Optimization</div>
+      <div class="aw-org">eMarketing Institute · 2025</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">PM</div>
       <div class="aw-title">Product Management Certification</div>
       <div class="aw-org">Ioda Academy · 2024</div>
-    </div>
-    <!-- NEW CERTS FROM CV -->
-    <div class="aw-card">
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">ENT</div>
-      <div class="aw-title">Bootcamp Unesa Kewirausahaan[cite: 1]</div>
-      <div class="aw-org">Universitas Negeri Surabaya · 2025[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Bootcamp Unesa Kewirausahaan</div>
+      <div class="aw-org">Universitas Negeri Surabaya · 2025</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">SMM</div>
-      <div class="aw-title">Social Media Marketing[cite: 1]</div>
-      <div class="aw-org">eMarketing Institute · 2025[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Social Media Marketing</div>
+      <div class="aw-org">eMarketing Institute · 2025</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">ENT</div>
-      <div class="aw-title">Entrepreneurship Course[cite: 1]</div>
-      <div class="aw-org">HP LIFE · 2024[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Entrepreneurship Course</div>
+      <div class="aw-org">HP LIFE · 2024</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">DM</div>
-      <div class="aw-title">Job Connector Digital Marketing[cite: 1]</div>
-      <div class="aw-org">Luarsekolah · 2024[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Job Connector Digital Marketing</div>
+      <div class="aw-org">Luarsekolah · 2024</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">EM</div>
-      <div class="aw-title">Email and WhatsApp Marketing[cite: 1]</div>
-      <div class="aw-org">MySkill · 2024[cite: 1]</div>
-    </div>
-    <div class="aw-card">
+      <div class="aw-title">Email and WhatsApp Marketing</div>
+      <div class="aw-org">MySkill · 2024</div>
+    </a>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
       <div class="aw-rank">DM</div>
-      <div class="aw-title">Intro to Digital Marketing[cite: 1]</div>
-      <div class="aw-org">RevoU · 2024[cite: 1]</div>
-    </div>
+      <div class="aw-title">Intro to Digital Marketing</div>
+      <div class="aw-org">RevoU · 2024</div>
+    </a>
   </div>
 </section>
 
@@ -687,10 +753,10 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/meta/000000" alt="Meta Ads"> Meta Ads</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/medium/000000" alt="Copywriting"> Copywriting</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/eventbrite/000000" alt="Events"> Event Planning</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/googletrends/000000" alt="Trends"> Google Trends[cite: 1]</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="TikTok"> TikTok Creative Center[cite: 1]</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/uber/000000" alt="Ubersuggest"> Ubersuggest[cite: 1]</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/youtube/000000" alt="SocialBlade"> SocialBlade[cite: 1]</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/googletrends/000000" alt="Trends"> Google Trends</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="TikTok"> TikTok Creative Center</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/uber/000000" alt="Ubersuggest"> Ubersuggest</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/youtube/000000" alt="SocialBlade"> SocialBlade</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/canva/000000" alt="Canva"> Canva</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/capcut/000000" alt="CapCut"> CapCut</span>
         </div>
@@ -699,11 +765,11 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
         <div class="sk-cat">Business & Tools</div>
         <div class="sk-pills">
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/shopee/000000" alt="E-Commerce"> E-Commerce</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/tokopedia/000000" alt="Tokopedia"> Tokopedia[cite: 1]</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/tokopedia/000000" alt="Tokopedia"> Tokopedia</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/googleanalytics/000000" alt="Research"> Market Research</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/microsoftexcel/000000" alt="Excel"> Microsoft Excel</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/microsoftpowerpoint/000000" alt="PowerPoint"> PowerPoint[cite: 1]</span>
-          <span class="sk-pill"><img src="https://cdn.simpleicons.org/microsoftword/000000" alt="Word"> Word[cite: 1]</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/microsoftpowerpoint/000000" alt="PowerPoint"> PowerPoint</span>
+          <span class="sk-pill"><img src="https://cdn.simpleicons.org/microsoftword/000000" alt="Word"> Word</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/googleworkspace/000000" alt="Workspace"> Google Workspace</span>
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/notion/000000" alt="Notion"> Notion</span>
         </div>
@@ -712,13 +778,13 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
         <div class="sk-cat">Soft Skills</div>
         <div class="sk-pills">
           <span class="sk-pill">Leadership</span>
-          <span class="sk-pill">Strategic Communication[cite: 1]</span>
+          <span class="sk-pill">Strategic Communication</span>
           <span class="sk-pill">Strategic Thinking</span>
           <span class="sk-pill">Problem Solving</span>
           <span class="sk-pill">Fast Learning</span>
-          <span class="sk-pill">Adaptability[cite: 1]</span>
-          <span class="sk-pill">Attention to Detail[cite: 1]</span>
-          <span class="sk-pill">Initiative[cite: 1]</span>
+          <span class="sk-pill">Adaptability</span>
+          <span class="sk-pill">Attention to Detail</span>
+          <span class="sk-pill">Initiative</span>
         </div>
       </div>
     </div>
@@ -730,11 +796,11 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   </div>
 </section>
 
-<!-- NEW CV DOWNLOAD CTA -->
+<!-- CV DOWNLOAD CTA -->
 <div class="cv-cta-section" id="cv-section">
   <div class="cv-cta-box">
     <div class="cv-cta-icon">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
         <polyline points="14 2 14 8 20 8"></polyline>
         <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -744,7 +810,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     </div>
     <h2>Want the full picture?</h2>
     <p>Dive deeper into my experiences, detailed project scope, and complete academic background by reviewing my full curriculum vitae.</p>
-    <a href="#" class="btn-cv">
+    <a href="CV_Kharina_Rifdah_Hidayah.pdf" class="btn-cv" target="_blank">
       Download Full CV (PDF)
     </a>
   </div>
@@ -759,19 +825,43 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <div class="ct-right">
       <div class="ct-links">
         <a href="mailto:kharinarifdahh@gmail.com" class="ct-link">
-          <div><div class="ct-label">Email</div><div class="ct-val">kharinarifdahh@gmail.com</div></div>
+          <div>
+            <div class="ct-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Email
+            </div>
+            <div class="ct-val">kharinarifdahh@gmail.com</div>
+          </div>
           <span class="ct-arrow">→</span>
         </a>
         <a href="https://linkedin.com/in/kharinarifdahhidayah" target="_blank" class="ct-link">
-          <div><div class="ct-label">LinkedIn</div><div class="ct-val">linkedin.com/in/kharinarifdahhidayah</div></div>
+          <div>
+            <div class="ct-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              LinkedIn
+            </div>
+            <div class="ct-val">linkedin.com/in/kharinarifdahhidayah</div>
+          </div>
           <span class="ct-arrow">↗</span>
         </a>
         <a href="https://kharinarifdahhidayah.my.canva.site/portfolio" target="_blank" class="ct-link">
-          <div><div class="ct-label">Portfolio[cite: 1]</div><div class="ct-val">kharinarifdahhidayah.my.canva.site/portfolio[cite: 1]</div></div>
+          <div>
+            <div class="ct-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+              Portfolio
+            </div>
+            <div class="ct-val">kharinarifdahhidayah.my.canva.site/portfolio</div>
+          </div>
           <span class="ct-arrow">↗</span>
         </a>
-        <a href="tel:+6289536475818" class="ct-link">
-          <div><div class="ct-label">Phone / WhatsApp</div><div class="ct-val">+62 8953 6475 7818</div></div>
+        <a href="https://wa.me/62895364757818" target="_blank" class="ct-link">
+          <div>
+            <div class="ct-label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Phone / WhatsApp
+            </div>
+            <div class="ct-val">+62 8953 6475 7818</div>
+          </div>
           <span class="ct-arrow">→</span>
         </a>
       </div>
@@ -787,6 +877,13 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   <span class="f-name">Kharina Rifdah Hidayah</span>
   <span class="f-copy">© 2026 Marketing Portfolio</span>
 </footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/62895364757818" class="wa-float" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24">
+    <path d="M12.031 2C6.49 2 2 6.49 2 12.03c0 1.78.46 3.52 1.35 5.08L2 22l4.98-1.32c1.51.84 3.2 1.28 4.96 1.28h.01c5.54 0 10.04-4.49 10.04-10.03C22 6.49 17.57 2 12.031 2zm0 18.22c-1.5 0-2.98-.4-4.28-1.16l-.31-.18-3.18.84.85-3.1-.2-.32a8.21 8.21 0 0 1-1.25-4.43c0-4.54 3.69-8.22 8.24-8.22 4.54 0 8.23 3.69 8.23 8.22 0 4.54-3.69 8.23-8.24 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.22-.08-.39-.12-.55.12-.17.25-.64.81-.79.98-.14.17-.29.2-.54.08-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.44.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.06-.12-.55-1.32-.76-1.81-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.78 2.71 4.31 3.8.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.06 1.47-.6 1.67-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.15-.48-.28z"/>
+  </svg>
+</a>
 
 <script>
 const els = document.querySelectorAll('.exp-item, .proj-card, .aw-card, .metric, .about-card, .about-right, .stat-item, .cv-cta-box');
