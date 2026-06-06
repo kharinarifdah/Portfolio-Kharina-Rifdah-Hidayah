@@ -3,6 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- META TAGS & FAVICON (SEO & Sharing) -->
+<meta name="description" content="Marketing & Business Development Portfolio of Kharina Rifdah Hidayah. Undergraduate with a track record in digital marketing, event planning, and community growth.">
+<meta name="keywords" content="Kharina Rifdah Hidayah, Marketing Portfolio, Business Development, Digital Marketing, Surabaya">
+<meta name="author" content="Kharina Rifdah Hidayah">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.domainkamu.com/">
+<meta property="og:title" content="Kharina Rifdah Hidayah | Marketing Portfolio">
+<meta property="og:description" content="I build campaigns, communities, and brands that actually grow. Explore my projects, CV, and professional experiences.">
+<meta property="og:image" content="preview.jpg">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.domainkamu.com/">
+<meta property="twitter:title" content="Kharina Rifdah Hidayah | Marketing Portfolio">
+<meta property="twitter:description" content="I build campaigns, communities, and brands that actually grow. Explore my projects, CV, and professional experiences.">
+<meta property="twitter:image" content="preview.jpg">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
 <title>Kharina Rifdah Hidayah</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -25,6 +47,21 @@
 html{scroll-behavior:smooth}
 body{font-family:var(--inter);background:var(--gray);color:var(--text);overflow-x:hidden}
 
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.anim-up { opacity:0; animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards; }
+.anim-d1 { animation-delay: 0.1s; }
+.anim-d2 { animation-delay: 0.2s; }
+.anim-d3 { animation-delay: 0.3s; }
+.anim-d4 { animation-delay: 0.4s; }
+
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:99;
@@ -34,16 +71,17 @@ nav{
   border-bottom:1px solid rgba(0,0,0,0.06);
   backdrop-filter:blur(8px);
 }
-.nav-name{font-family:var(--syne);font-size:.95rem;font-weight:800;color:var(--black);text-decoration:none;letter-spacing:-.01em}
+.nav-name{font-family:var(--syne);font-size:.95rem;font-weight:800;color:var(--black);text-decoration:none;letter-spacing:-.01em; transition:color .2s}
+.nav-name:hover{color:var(--pink)}
 .nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-size:.8rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--pink)}
+.nav-links a{font-size:.8rem;color:var(--muted);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;font-weight:500;transition:all .2s}
+.nav-links a:hover{color:var(--pink); transform:translateY(-1px); display:inline-block;}
 
 /* HERO */
 #hero{
   background:var(--black);
   display:grid;
-  grid-template-columns:1fr 500px; /* Diperbesar dari 420px */
+  grid-template-columns:1fr 600px; 
   gap:0;
   align-items:end;
   padding:0 3rem 0 3rem;
@@ -68,23 +106,23 @@ h1{
 h1 .pink{color:var(--pink)}
 .hero-sub{
   font-size:.95rem;color:rgba(255,255,255,.45);
-  max-width:380px;line-height:1.75;font-weight:300;margin-bottom:2.5rem;
+  max-width:420px;line-height:1.75;font-weight:300;margin-bottom:2.5rem;
 }
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn-pink{
   background:var(--pink);color:#fff;
   padding:.8rem 1.8rem;border-radius:2rem;
   font-size:.82rem;font-weight:500;text-decoration:none;
-  transition:background .2s,transform .15s;letter-spacing:.02em;
+  transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);letter-spacing:.02em;
 }
-.btn-pink:hover{background:var(--pink-dark);transform:translateY(-1px)}
+.btn-pink:hover{background:var(--pink-dark);transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,42,122,.3);}
 .btn-outline{
   border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);
   padding:.8rem 1.8rem;border-radius:2rem;
   font-size:.82rem;font-weight:400;text-decoration:none;
-  transition:border-color .2s,color .2s;
+  transition:all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-.btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-outline:hover{border-color:rgba(255,255,255,.5);color:#fff; transform:translateY(-3px);}
 
 /* HERO IMAGE RIGHT */
 .hero-right-image{
@@ -94,30 +132,36 @@ h1 .pink{color:var(--pink)}
   height:100%;
   position:relative;
   z-index:2;
+  opacity:0;
+  animation: scaleIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s forwards;
 }
 .hero-right-image img{
   width:100%;
-  max-width:480px; /* Diperbesar agar foto lebih stand out */
-  height:82vh; /* Dipertinggi */
+  max-width:600px;
+  height:85vh; 
   object-fit:cover;
   border-radius:24px 24px 0 0;
-  border:1px solid rgba(255,255,255,.1);
-  border-bottom:none;
-  filter: grayscale(10%) contrast(105%);
+  border:none;
+  filter: grayscale(5%) contrast(105%);
 }
 
-/* NEW STATS BAR */
+/* STATS BAR */
 .stats-bar{
   background:var(--white);
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  padding:2.5rem 3rem;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  padding:2.5rem 0; 
   border-bottom:1px solid rgba(0,0,0,.06);
-  flex-wrap:wrap;
-  gap:2rem;
 }
-.stat-item{text-align:center;}
+.stat-item{
+  text-align:center;
+  border-right:1px solid rgba(0,0,0,.08); 
+  transition:transform 0.3s;
+}
+.stat-item:hover{transform:translateY(-3px);}
+.stat-item:last-child{
+  border-right:none; 
+}
 .stat-item .stat-n{font-family:var(--syne);font-size:2.5rem;font-weight:800;color:var(--black);line-height:1;}
 .stat-item .stat-l{font-size:.75rem;color:var(--muted);margin-top:.4rem;line-height:1.4;font-weight:500;text-transform:uppercase;letter-spacing:.05em;}
 
@@ -153,21 +197,9 @@ section{padding:6rem 3rem}
 .about-card{
   background:var(--blue);border-radius:24px;padding:2.5rem;
   position:relative;overflow:hidden;
+  transition:all 0.3s;
 }
-.about-card::after{
-  content:'KRH';
-  font-family:var(--syne);font-size:7rem;font-weight:800;
-  color:rgba(255,255,255,.06);
-  position:absolute;bottom:-1rem;right:1rem;line-height:1;
-  pointer-events:none;
-}
-.about-initials{
-  width:60px;height:60px;border-radius:50%;
-  background:rgba(255,255,255,.15);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--syne);font-size:1.1rem;font-weight:800;color:#fff;
-  margin-bottom:1.5rem;
-}
+.about-card:hover{box-shadow:0 15px 35px rgba(27,95,255,0.2); transform:translateY(-5px);}
 .about-card h3{font-family:var(--syne);font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:.35rem}
 .about-card p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.7;font-weight:300}
 .about-card .courses{font-size:.75rem; color:rgba(255,255,255,.8); margin-top:1rem; line-height:1.6; border-top:1px solid rgba(255,255,255,.1); padding-top:1rem;}
@@ -175,11 +207,13 @@ section{padding:6rem 3rem}
 .pill{
   font-size:.7rem;padding:.3rem .85rem;border-radius:2rem;
   border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);
-  font-weight:400;
+  font-weight:400; transition:all 0.2s;
 }
+.pill:hover{background:var(--pink); border-color:var(--pink); color:#fff;}
 .about-right p{font-size:.93rem;color:var(--muted);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
 .metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.08);border-radius:16px;overflow:hidden;margin-top:2rem}
-.metric{background:var(--gray);padding:1.5rem 1rem;text-align:center}
+.metric{background:var(--gray);padding:1.5rem 1rem;text-align:center; transition:background 0.3s;}
+.metric:hover{background:var(--white);}
 .metric-n{font-family:var(--syne);font-size:1.8rem;font-weight:800;color:var(--pink)}
 .metric-l{font-size:.7rem;color:var(--muted);margin-top:.25rem;line-height:1.3}
 
@@ -204,10 +238,6 @@ section{padding:6rem 3rem}
 .exp-co{font-size:.85rem;font-weight:700;color:var(--pink)}
 .exp-loc{font-size:.7rem;color:var(--muted);margin-top:.2rem}
 .exp-role{font-family:var(--syne);font-size:1.1rem;font-weight:800;color:var(--black);margin-bottom:.8rem}
-.new-badge{
-  display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:var(--pink);color:#fff;padding:.15rem .6rem;border-radius:2rem;margin-left:.5rem;vertical-align:middle;
-}
 .exp-points{list-style:none;display:flex;flex-direction:column;gap:.4rem}
 .exp-points li{font-size:.85rem;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.6;font-weight:400}
 .exp-points li::before{content:'✦';position:absolute;left:0;color:var(--pink);font-size:.65rem; top:.15rem;}
@@ -239,48 +269,133 @@ section{padding:6rem 3rem}
 .proj-card.hero-card .proj-desc{color:rgba(255,255,255,.5)}
 .proj-stats{display:flex;gap:1rem;margin-top:1.25rem;flex-wrap:wrap; padding-top:1rem; border-top:1px solid rgba(0,0,0,.05);}
 .proj-card.hero-card .proj-stats{border-top-color:rgba(255,255,255,.1);}
-.ps{font-size:.75rem;font-weight:600;color:var(--blue)}
+
+/* PROJECT STATS ENLARGED WITH STARS */
+.ps{font-size:.9rem;font-weight:700;color:var(--blue)}
 .proj-card.hero-card .ps{color:#6FA3FF}
 
-/* PHONE MOCKUP */
-.phone-mockup-wrapper{display:flex;justify-content:center;margin:1rem 0 1.5rem 0;}
-.phone-mockup{
-  width:160px; height:320px; border:6px solid #1a1a24; border-radius:24px;
-  overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,.1); background:#f0f0f0; position:relative;
+/* DESIGNS GRID & DOCUMENTS (With Hover States for Lightbox) */
+#designs{background:var(--gray); padding-top:2rem;}
+.design-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1rem;
 }
-.phone-mockup::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:40px;height:12px;background:#1a1a24;border-bottom-left-radius:10px;border-bottom-right-radius:10px;z-index:2;
+.design-item{
+  aspect-ratio:1/1; overflow:hidden; border-radius:16px; position:relative;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05); cursor: pointer;
 }
-.phone-mockup img{width:100%; height:100%; object-fit:cover;}
+.design-item img{
+  width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;
+}
+.design-item:hover img{transform:scale(1.08);}
+.design-item::after{
+  content:'+'; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+  color:white; font-size:2rem; opacity:0; transition:0.3s ease; z-index:2;
+}
+.design-item:hover::before{
+  content:''; position:absolute; top:0; left:0; right:0; bottom:0;
+  background:rgba(255,42,122,0.4); z-index:1;
+}
+.design-item:hover::after{ opacity:1; }
+
+#documents{background:var(--white);}
+.doc-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem;
+}
+.doc-card{
+  background:var(--gray); padding:2rem 1.5rem; border-radius:20px; text-align:center;
+  transition:all 0.3s; border:1px solid rgba(0,0,0,0.03); cursor:pointer; position:relative;
+}
+.doc-card:hover{transform:translateY(-5px); background:var(--white); box-shadow:0 10px 30px rgba(0,0,0,0.06); border-color:var(--pink);}
+.doc-icon{
+  width:50px; height:50px; background:var(--pink-pale); color:var(--pink); border-radius:14px;
+  display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem auto;
+}
+.doc-title{font-family:var(--syne); font-size:1.05rem; font-weight:800; color:var(--black); margin-bottom:.5rem;}
+.doc-desc{font-size:.75rem; color:var(--muted); line-height:1.5;}
+
+/* LIGHTBOX (POP-UP) */
+.lightbox {
+  display: none; position: fixed; z-index: 9999; padding-top: 5vh;
+  left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+  background-color: rgba(10, 10, 15, 0.95); backdrop-filter: blur(8px);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.lightbox.show { display: block; opacity: 1; }
+.lightbox-content {
+  margin: auto; display: block; max-width: 90%; max-height: 80vh;
+  border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  animation: zoom 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.lightbox-text-wrapper {
+  margin: auto; display: none; width: 90%; max-width: 800px;
+  background: var(--black); border: 1px solid rgba(255,255,255,0.1);
+  padding: 3rem; border-radius: 20px; color: rgba(255,255,255,0.85);
+  font-size: 1.05rem; line-height: 1.8; animation: zoom 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+#lightbox-caption {
+  margin: auto; display: block; width: 80%; max-width: 700px;
+  text-align: center; color: rgba(255,255,255,0.8); padding: 20px 0;
+  font-family: var(--syne); font-size: 1.2rem; font-weight: 700;
+}
+.lightbox-close {
+  position: absolute; top: 20px; right: 40px; color: #fff;
+  font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+  background: rgba(255,255,255,0.1); width: 50px; height: 50px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  line-height: 0; padding-bottom: 5px; z-index: 10000;
+}
+.lightbox-close:hover, .lightbox-close:focus { background: var(--pink); color: #fff; text-decoration: none; cursor: pointer; }
+@keyframes zoom { from {transform:scale(0.9); opacity:0;} to {transform:scale(1); opacity:1;} }
+
+/* TESTIMONIALS */
+#testimonials{background:var(--black);}
+#testimonials .s-label{color:var(--pink);}
+#testimonials .s-title{color:var(--white);}
+.testi-grid{display:grid; grid-template-columns:1fr 1fr; gap:2rem;}
+.testi-card{
+  background:#13131A; padding:3rem 2.5rem; border-radius:24px; border:1px solid rgba(255,255,255,0.05);
+  position:relative; transition:all 0.3s; cursor:pointer;
+}
+.testi-card:hover{background:#1A1A24; border-color:rgba(255,42,122,0.3); transform:translateY(-5px);}
+.testi-card::after{
+  content:'Read Full Text →'; position:absolute; bottom:1.5rem; right:2.5rem;
+  font-size:0.75rem; color:var(--pink); font-weight:600; opacity:0; transition:0.3s;
+}
+.testi-card:hover::after{opacity:1; transform:translateX(5px);}
+.testi-quote-icon{
+  font-family:serif; font-size:5rem; color:rgba(255,42,122,0.2); position:absolute; top:1rem; left:1.5rem; line-height:1; pointer-events:none;
+}
+.testi-text{
+  font-size:.95rem; line-height:1.8; color:rgba(255,255,255,0.7); font-style:italic; 
+  margin-bottom:2rem; position:relative; z-index:2;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
+.testi-author{font-family:var(--syne); font-size:1.1rem; font-weight:800; color:var(--white);}
+.testi-role{font-size:.75rem; color:var(--pink); text-transform:uppercase; letter-spacing:.05em; margin-top:.2rem;}
 
 /* AWARDS & CERTS */
-#awards{background:var(--black)}
-#awards .s-label{color:var(--pink)}
-#awards .s-title{color:#fff}
+#awards{background:var(--gray)}
 .ac-header{
-  font-family:var(--syne);font-size:1.4rem;font-weight:800;color:#fff;
+  font-family:var(--syne);font-size:1.4rem;font-weight:800;color:var(--black);
   margin-top:3rem;margin-bottom:1.5rem;letter-spacing:-.02em;
 }
-.aw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:20px;overflow:hidden}
+.aw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.08);border-radius:20px;overflow:hidden}
+.aw-grid-half{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(0,0,0,.08);border-radius:20px;overflow:hidden; margin-top:1px;}
+
 a.aw-card{
-  background:var(--black);padding:2rem 1.75rem;transition:background .2s, transform .2s;
+  background:var(--white);padding:2rem 1.75rem;transition:background .2s, transform .2s;
   text-decoration:none; display:block; cursor:pointer;
 }
-a.aw-card:hover{background:#111; transform:scale(1.02); z-index:2; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.5);}
+a.aw-card:hover{background:var(--pink-pale); transform:scale(1.02); z-index:2; position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.1);}
 .aw-rank{font-family:var(--syne);font-size:2.5rem;font-weight:800;color:var(--pink);line-height:1;margin-bottom:.75rem}
-.aw-title{font-size:.85rem;font-weight:600;color:#fff;margin-bottom:.4rem;line-height:1.4}
-.aw-org{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;font-weight:400}
-
-/* FULL WIDTH AWARDS */
-a.aw-card.aw-card-full{
-  grid-column: 1 / -1; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;
-}
-a.aw-card.aw-card-full .aw-rank{margin-bottom:0;}
-a.aw-card.aw-card-full .aw-details{text-align:right;}
+.aw-title{font-size:.85rem;font-weight:600;color:var(--black);margin-bottom:.4rem;line-height:1.4}
+.aw-org{font-size:.75rem;color:var(--muted);line-height:1.5;font-weight:400}
+.aw-card-cert { display: flex; flex-direction: column; justify-content: center; }
+.aw-card-cert .aw-title { font-size: 1rem; margin-bottom: 0.5rem; color: var(--pink); }
 
 /* SKILLS */
-#skills{background:var(--gray)}
+#skills{background:var(--white)}
 .sk-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .sk-group{margin-bottom:2rem}
 .sk-cat{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:.85rem}
@@ -295,10 +410,11 @@ a.aw-card.aw-card-full .aw-details{text-align:right;}
 .sk-pill img{width:14px;height:14px;opacity:0.7;transition:all .2s;}
 .sk-pill:hover{background:var(--pink);border-color:var(--pink);color:#fff; transform:translateY(-2px); box-shadow:0 5px 15px rgba(255,42,122,.2);}
 .sk-pill:hover img{filter:brightness(0) invert(1);opacity:1;}
-.sk-right{}
+
+.sk-right{margin-top:0;} 
 .sk-quote{
   font-family:var(--syne);font-size:1.6rem;font-weight:800;
-  color:var(--black);line-height:1.3;margin-bottom:2.5rem;letter-spacing:-.02em;
+  color:var(--black);line-height:1.3;margin-top:2.5rem;letter-spacing:-.02em;
 }
 .sk-quote span{color:var(--pink)}
 .lang-row{
@@ -313,37 +429,36 @@ a.aw-card.aw-card-full .aw-details{text-align:right;}
 
 /* CV BANNER CTA */
 .cv-cta-section{
-  background:linear-gradient(135deg, var(--black) 0%, #1a1a24 100%);
-  padding:5rem 3rem;
+  background: var(--black); /* Background Hitam Solid */
+  padding:6rem 3rem;
   text-align:center;
-  border-top:1px solid rgba(255,255,255,0.05);
 }
 .cv-cta-box{
   max-width:600px;
   margin:0 auto;
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,0.1);
-  padding:3.5rem;
+  padding:4rem 3.5rem;
   border-radius:24px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 .cv-cta-icon{
-  width:55px;height:55px;background:rgba(255,42,122,.15);color:var(--pink);
+  width:60px;height:60px;background:rgba(255,42,122,.15);color:var(--pink);
   border-radius:50%;display:flex;align-items:center;justify-content:center;
   margin:0 auto 1.5rem auto;
 }
 .cv-cta-box h2{
-  font-family:var(--syne);font-size:2.2rem;color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em;
+  font-family:var(--syne);font-size:2.4rem;color:#fff;font-weight:800;margin-bottom:1rem;letter-spacing:-.02em;
 }
 .cv-cta-box p{
-  color:rgba(255,255,255,0.6);font-size:.95rem;line-height:1.6;margin-bottom:2.5rem;
+  color:rgba(255,255,255,0.7);font-size:1rem;line-height:1.6;margin-bottom:2.5rem;
 }
 .btn-cv{
   display:inline-flex;align-items:center;gap:.75rem;
   background:var(--pink);color:#fff;padding:1rem 2.5rem;border-radius:2rem;
   font-weight:600;font-size:.95rem;text-decoration:none;transition:all .2s;
 }
-.btn-cv:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,42,122,.3);}
+.btn-cv:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(255,42,122,.4);}
 
 /* CONTACT */
 #contact{background:var(--blue)}
@@ -363,7 +478,6 @@ a.aw-card.aw-card-full .aw-details{text-align:right;}
   color:rgba(255,255,255,.5);font-weight:600; display:flex; align-items:center; gap:8px;
 }
 .ct-val{font-size:.9rem;color:#fff;margin-top:.3rem;font-weight:400}
-.ct-arrow{color:rgba(255,255,255,.4);font-size:1.2rem; font-weight:300;}
 .avail{
   margin-top:1.5rem;background:rgba(255,255,255,.1);border-radius:16px;
   padding:1.2rem 1.5rem;border:1px solid rgba(255,255,255,.15);
@@ -377,7 +491,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 .f-name{font-family:var(--syne);font-size:.9rem;font-weight:800;color:rgba(255,255,255,.4)}
 .f-copy{font-size:.75rem;color:rgba(255,255,255,.2)}
 
-/* WA FLOATING BUTTON */
+/* WA & BACK TO TOP FLOATING BUTTONS */
 .wa-float{
   position:fixed; bottom:30px; right:30px; width:65px; height:65px;
   background:#25D366; color:#fff; border-radius:50%;
@@ -388,6 +502,17 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 .wa-float:hover{transform:scale(1.1) translateY(-5px); box-shadow:0 10px 25px rgba(37,211,102,0.6);}
 .wa-float svg{width:36px; height:36px; fill:currentColor;}
 
+.back-to-top {
+  position:fixed; bottom:30px; left:30px; width:65px; height:65px;
+  background:var(--black); color:var(--white); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3); z-index:100;
+  transition:all .3s ease; border:1px solid rgba(255,255,255,0.1); outline:none; cursor:pointer;
+  opacity:0; pointer-events:none; transform:translateY(20px);
+}
+.back-to-top.show { opacity:1; pointer-events:auto; transform:translateY(0); }
+.back-to-top:hover { background:var(--pink); border-color:var(--pink); transform:translateY(-5px); box-shadow:0 10px 25px rgba(255,42,122,0.4); }
+
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
   .nav-links{display:none}
@@ -395,21 +520,30 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   .hero-badge{margin:0 auto 2rem auto;}
   .hero-sub{margin:0 auto 2.5rem auto;}
   .hero-btns{justify-content:center;}
-  .hero-right-image img{height:55vh;max-width:380px;margin:0 auto;}
-  .stats-bar{grid-template-columns:repeat(2,1fr);display:grid;padding:2rem 1.5rem;gap:1.5rem;}
+  .hero-right-image img{height:55vh;max-width:450px;margin:0 auto;}
+  
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .stat-item{padding:1.5rem 0; border-bottom:1px solid rgba(0,0,0,.08);}
+  .stat-item:nth-child(2){border-right:none;}
+  .stat-item:nth-child(3), .stat-item:nth-child(4){border-bottom:none;}
+
   section{padding:4rem 1.5rem}
   .about-wrap,.sk-wrap,.ct-wrap{grid-template-columns:1fr;gap:2.5rem}
   .exp-item{grid-template-columns:1fr;gap:1rem; padding:1.5rem;}
   .proj-grid{grid-template-columns:1fr}
   .proj-card.hero-card{grid-column:span 1}
+  .design-grid{grid-template-columns:repeat(2,1fr);}
+  .doc-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
   .aw-grid{grid-template-columns:1fr}
-  a.aw-card.aw-card-full{flex-direction:column; text-align:center; align-items:center;}
-  a.aw-card.aw-card-full .aw-details{text-align:center;}
+  .aw-grid-half{grid-template-columns:1fr;}
   .cv-cta-section{padding:4rem 1.5rem;}
   .cv-cta-box{padding:2rem;}
   footer{padding:1.5rem;flex-direction:column;gap:.5rem;text-align:center}
+  
   .wa-float{bottom:20px; right:20px; width:55px; height:55px;}
   .wa-float svg{width:30px; height:30px;}
+  .back-to-top{bottom:20px; left:20px; width:55px; height:55px;}
 }
 </style>
 </head>
@@ -422,28 +556,27 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#awards">Awards</a></li>
-    <li><a href="#cv-section">Resume</a></li>
+    <li><a href="#cv-section">CV</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <section id="hero">
-  <div class="hero-left">
+  <div class="hero-left anim-up">
     <div class="hero-badge"><span></span> Open to Opportunities</div>
-    <h1>Kharina<br><span class="pink">Rifdah</span><br>Hidayah</h1>
-    <p class="hero-sub">Marketing & Business Development. I build campaigns, communities, and brands that actually grow.</p>
-    <div class="hero-btns">
+    <h1 class="anim-up anim-d1">Kharina<br><span class="pink">Rifdah</span><br>Hidayah</h1>
+    <p class="hero-sub anim-up anim-d2">Marketing & Business Development Strategist. I transform ideas into high-impact campaigns, engaged communities, and scalable brands.</p>
+    <div class="hero-btns anim-up anim-d3">
       <a href="#projects" class="btn-pink">View Projects</a>
-      <a href="#cv-section" class="btn-outline">View Resume</a>
+      <a href="#cv-section" class="btn-outline">View CV</a>
     </div>
   </div>
   <div class="hero-right-image">
-    <!-- Foto hero sudah diperbesar dimensinya via CSS -->
-    <img src="Kharina Rifdah Hidayah.jpg" alt="Kharina Rifdah Hidayah">
+    <img src="Kharina Rifdah Hidayah.png" alt="Kharina Rifdah Hidayah">
   </div>
 </section>
 
-<div class="stats-bar">
+<div class="stats-bar scroll-anim">
   <div class="stat-item"><div class="stat-n">100+</div><div class="stat-l">Team Members Led</div></div>
   <div class="stat-item"><div class="stat-n">3.70</div><div class="stat-l">GPA / 4.00</div></div>
   <div class="stat-item"><div class="stat-n">+3,500%</div><div class="stat-l">Revenue Growth</div></div>
@@ -459,8 +592,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 
 <section id="about">
   <div class="about-wrap">
-    <div class="about-card">
-      <div class="about-initials">KRH</div>
+    <div class="about-card scroll-anim">
       <h3>Kharina Rifdah Hidayah</h3>
       <p>Marketing Management Undergraduate<br>Universitas Negeri Surabaya · 2023–2027</p>
       
@@ -476,11 +608,11 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
         <span class="pill">Leadership</span>
       </div>
     </div>
-    <div class="about-right">
+    <div class="about-right scroll-anim">
       <div class="s-label">About</div>
       <div class="s-title" style="margin-bottom:1.25rem">Marketer who<br>builds, not just plans.</div>
-      <p>Undergraduate with real track record: founded two businesses, co-founded an English-learning community of 5,000+ members, led 100+ cross-functional teams at a national edutech startup. I combine strategy with hands-on execution.</p>
-      <p>Currently at Sinopacific Peralatan Indonusa as Marketing Intern, supporting B2B industrial marketing operations in Surabaya.</p>
+      <p>A relentless executor with a proven track record. From scaling a 5,000+ member English-learning community to leading a 100-person cross-functional edutech team, I bridge the gap between high-level strategy and on-the-ground execution.</p>
+      <p>Currently driving B2B growth and digital operations at PT Sinopacific Peralatan Indonusa in Surabaya.</p>
       <div class="metrics-row">
         <div class="metric"><div class="metric-n">5K+</div><div class="metric-l">Community Members</div></div>
         <div class="metric"><div class="metric-n">1.4K</div><div class="metric-l">Event Participants</div></div>
@@ -495,24 +627,24 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   <div class="s-title">Experience</div>
   <div class="exp-list">
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
-        <div class="exp-period">Jun – Aug 2026</div>
+        <div class="exp-period">Jun 2026 – Aug 2026</div>
         <div class="exp-co">PT Sinopacific Peralatan Indonusa</div>
         <div class="exp-loc">Surabaya</div>
       </div>
       <div>
-        <div class="exp-role">Marketing Intern <span class="new-badge">New</span></div>
+        <div class="exp-role">Marketing Intern</div>
         <ul class="exp-points">
-          <li>Supported B2B marketing campaigns for industrial equipment distribution</li>
-          <li>Coordinated promotional materials and client-facing communication</li>
+          <li>Executed high-volume B2B outreach by deploying targeted chat blasts to 200+ prospects daily.</li>
+          <li>Accelerated the sales pipeline by drafting 2-5 customized client quotations per day and coordinating promotional materials.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
-        <div class="exp-period">Feb 2025 – May 2025</div>
+        <div class="exp-period">Feb 2026 – May 2026</div>
         <div class="exp-co">PT Pelindo Jasa Maritim Area Jawa I</div>
         <div class="exp-loc">Surabaya</div>
       </div>
@@ -525,9 +657,9 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
-        <div class="exp-period">Mar – Nov 2025</div>
+        <div class="exp-period">Mar 2025 – Nov 2025</div>
         <div class="exp-co">Fluentify Education</div>
         <div class="exp-loc">Surabaya</div>
       </div>
@@ -540,9 +672,9 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
-        <div class="exp-period">Mar – Sep 2025</div>
+        <div class="exp-period">Mar 2025 – Sep 2025</div>
         <div class="exp-co">Teman Ambiss</div>
         <div class="exp-loc">Yogyakarta · Edutech</div>
       </div>
@@ -555,7 +687,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
         <div class="exp-period">Aug 2024 – Feb 2025</div>
         <div class="exp-co">Teman Ambiss</div>
@@ -570,7 +702,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
         <div class="exp-period">Nov 2024 – Apr 2025</div>
         <div class="exp-co">PT Tumbuh Global Indonesia</div>
@@ -585,7 +717,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
       </div>
     </div>
 
-    <div class="exp-item">
+    <div class="exp-item scroll-anim">
       <div>
         <div class="exp-period">May 2021 – Jan 2022</div>
         <div class="exp-co">Beautiful Path</div>
@@ -608,132 +740,219 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   <div class="s-title">Projects</div>
   <div class="proj-grid">
 
-    <div class="proj-card hero-card">
-      <div class="proj-num">01 — FEATURED</div>
-      <div class="proj-card-title">Bootcamp Excel for Accounting</div>
-      <!-- Gambar Placeholder -->
-      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Bootcamp Project" class="proj-img">
-      <div class="proj-desc">National online bootcamp organized end-to-end. Handled marketing, partnerships, logistics, and multi-team coordination under Teman Ambiss.</div>
+    <!-- PROJECT 1 -->
+    <div class="proj-card hero-card scroll-anim">
+      <div class="proj-num">01 — LATEST</div>
+      <div class="proj-card-title">B2B Digital Ecosystem Integration</div>
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="B2B Digital Marketing" class="proj-img">
+      <div class="proj-desc">Managed comprehensive digital marketing for industrial equipment distribution under PT Sinopacific Peralatan Indonusa. Handled website management, targeted chat blasting, and social media outreach campaigns to drive B2B engagement.</div>
       <div class="proj-stats">
-        <span class="ps">1,400+ participants</span>
-        <span class="ps">IDR 15M+ revenue</span>
-        <span class="ps">10+ media partners</span>
+        <span class="ps">★ Website Ops</span>
+        <span class="ps">★ 200+ Daily Chat Blasts</span>
+        <span class="ps">★ Social Media Outreach</span>
       </div>
     </div>
 
-    <div class="proj-card">
+    <!-- PROJECT 2 -->
+    <div class="proj-card scroll-anim">
       <div class="proj-num">02</div>
+      <div class="proj-card-title">UNESA Entrepreneurship Initiative</div>
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=600" alt="UNESA Project" class="proj-img">
+      <div class="proj-desc">Developed and pitched a comprehensive Business Model Canvas, securing 3rd Place at the Management Business Competition (MBION) organized by HMJ Management UNESA.</div>
+      <div class="proj-stats">
+        <span class="ps" style="color:var(--pink)">★ 3rd Place Winner</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="proj-card scroll-anim">
+      <div class="proj-num">03</div>
+      <div class="proj-card-title">National Accounting Bootcamp</div>
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="Bootcamp Project" class="proj-img">
+      <div class="proj-desc">National online bootcamp organized end-to-end. Handled marketing, partnerships, logistics, and multi-team coordination.</div>
+      <div class="proj-stats">
+        <span class="ps" style="color:var(--pink)">★ 1,400+ participants</span>
+        <span class="ps" style="color:var(--pink)">★ IDR 15M+ revenue</span>
+      </div>
+    </div>
+
+    <!-- PROJECT 4 -->
+    <div class="proj-card scroll-anim">
+      <div class="proj-num">04</div>
       <div class="proj-card-title">Fluentify Community Growth</div>
-      <!-- Gambar Placeholder -->
       <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Community Growth" class="proj-img">
       <div class="proj-desc">Full growth strategy for English-learning community — campaigns, events, and brand voice built from scratch.</div>
       <div class="proj-stats">
-        <span class="ps" style="color:var(--pink)">5,000+ members in 3 months</span>
+        <span class="ps" style="color:var(--pink)">★ 5,000+ members in 3 months</span>
       </div>
     </div>
 
-    <div class="proj-card">
-      <div class="proj-num">03</div>
-      <div class="proj-card-title">Beautiful Path — Shopee</div>
-      <!-- Mockup HP Placeholder -->
-      <div class="phone-mockup-wrapper">
-        <div class="phone-mockup">
-          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=400" alt="App Screen Mockup">
-        </div>
-      </div>
+    <!-- PROJECT 5 -->
+    <div class="proj-card scroll-anim">
+      <div class="proj-num">05</div>
+      <div class="proj-card-title">Marketplace Growth Engine: Beautiful Path</div>
+      <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=600" alt="App Screen Mockup" class="proj-img">
       <div class="proj-desc">Built a marketplace business with paid ads, flash sales, and creative content. Star Seller within the first month.</div>
       <div class="proj-stats">
-        <span class="ps" style="color:var(--pink)">5,000+ sales · 4.9★</span>
+        <span class="ps" style="color:var(--pink)">★ 5,000+ sales · 4.9 Rating</span>
       </div>
     </div>
 
   </div>
 </section>
 
+<!-- SECTION VISUAL DESIGNS -->
+<section id="designs">
+  <div class="s-label">Visuals</div>
+  <div class="s-title">Design Portfolio</div>
+  <div class="design-grid">
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800" alt="Social Media Graphic 1"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=800" alt="Campaign Banner 1"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" alt="Promotional Content 1"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?auto=format&fit=crop&q=80&w=800" alt="Event Poster 1"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80&w=800" alt="Social Media Graphic 2"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&q=80&w=800" alt="Brand Identity Draft"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Campaign Banner 2"></div>
+    <div class="design-item scroll-anim"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="Marketing Presentation"></div>
+  </div>
+</section>
+
+<!-- SECTION DOCUMENTS -->
+<section id="documents">
+  <div class="s-label">Administration & Planning</div>
+  <div class="s-title">Professional Documents</div>
+  <div class="doc-grid">
+    <div class="doc-card scroll-anim" data-img="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800">
+      <div class="doc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      </div>
+      <div class="doc-title">Event Timeline</div>
+      <div class="doc-desc">End-to-end scheduling and project management tracking.</div>
+    </div>
+    <div class="doc-card scroll-anim" data-img="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800">
+      <div class="doc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      </div>
+      <div class="doc-title">RAB (Budget Plan)</div>
+      <div class="doc-desc">Rencana Anggaran Biaya for operations and marketing execution.</div>
+    </div>
+    <div class="doc-card scroll-anim" data-img="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800">
+      <div class="doc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </div>
+      <div class="doc-title">Meeting Notulensi</div>
+      <div class="doc-desc">Detailed meeting minutes mapping strategic decisions.</div>
+    </div>
+    <div class="doc-card scroll-anim" data-img="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=800">
+      <div class="doc-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+      </div>
+      <div class="doc-title">Quotation Sales</div>
+      <div class="doc-desc">B2B client proposals and pricing strategy for PT Sinopacific.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div id="lightbox" class="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" alt="Enlarged Visual">
+  <div id="lightbox-text-wrapper" class="lightbox-text-wrapper"></div>
+  <div id="lightbox-caption"></div>
+</div>
+
+<!-- SECTION TESTIMONIALS -->
+<section id="testimonials">
+  <div class="s-label">Feedback</div>
+  <div class="s-title">Recommendations</div>
+  <div class="testi-grid">
+    <div class="testi-card scroll-anim" data-fulltext="<p style='margin-bottom:1rem;'>March 19, 2026, Ellya Mutiara managed Kharina Rifdah directly</p><p style='margin-bottom:1rem;'>Kharina has a strong sense of responsibility and always gives her best in everything she does. What I admire most about her is her consistency and dedication, even in challenging situations. She remains calm, thoughtful, and focused, which makes her someone people naturally trust and rely on.</p><p>On a personal level, she is a great listener and a supportive friend. She has a warm personality and a sincere way of connecting with people, making those around her feel valued and comfortable. I believe Kharina is the kind of person who not only excels in her work but also leaves a meaningful impact on the people she meets. I wholeheartedly recommend her to anyone who is looking for someone both competent and genuinely kind.</p>">
+      <div class="testi-quote-icon">"</div>
+      <div class="testi-text">Kharina has a strong sense of responsibility and always gives her best in everything she does. What I admire most about her is her consistency and dedication, even in challenging situations. She remains calm, thoughtful, and focused...</div>
+      <div class="testi-author">Ellya Mutiara</div>
+      <div class="testi-role">Direct Manager</div>
+    </div>
+    
+    <div class="testi-card scroll-anim" data-fulltext="<p style='margin-bottom:1rem;'>October 7, 2025, Ribka Septiani worked with Kharina Rifdah on the same team</p><p style='margin-bottom:1rem;'>I had the opportunity to work with Kharina for more than six months as my partner and Executive Assistant at Teman Ambiss, a youth development organization that helps young people grow their skills.</p><p style='margin-bottom:1rem;'>Kharina is a responsible, creative, and innovative person. She has great communication skills and works very well in a team. She made a big contribution to our success, helping Teman Ambiss reach over 1,000 participants and earn more than IDR 14 million in just one program.</p><p>She’s hardworking, full of ideas, and always brings positive energy to the team. I truly believe she will be a great asset to any organization she joins!</p>">
+      <div class="testi-quote-icon">"</div>
+      <div class="testi-text">I had the opportunity to work with Kharina for more than six months as my partner and Executive Assistant at Teman Ambiss. Kharina is a responsible, creative, and innovative person. She has great communication skills and works very well in a team...</div>
+      <div class="testi-author">Ribka Septiani Natty</div>
+      <div class="testi-role">Executive Assistant Partner · Teman Ambiss</div>
+    </div>
+  </div>
+</section>
+
 <section id="awards">
   <div class="s-label">Recognition</div>
-  <div class="s-title" style="margin-bottom:0;">Awards & Certifications</div>
+  <div class="s-title" style="margin-bottom:0; color:var(--black);">Awards & Certifications</div>
   
   <div class="ac-header">Awards</div>
   <div class="aw-grid">
-    <!-- Setiap card sekarang berupa link <a>, Anda bisa mengganti href dengan path dokumen Anda -->
-    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card scroll-anim">
       <div class="aw-rank">1st</div>
       <div class="aw-title">National BMC Competition</div>
       <div class="aw-org">Management Creativity Festival, USK · 2025</div>
     </a>
-    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card scroll-anim">
       <div class="aw-rank">★</div>
       <div class="aw-title">Best Intern — Product Management</div>
       <div class="aw-org">Teman Ambiss · 2024</div>
     </a>
-    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card">
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card scroll-anim">
       <div class="aw-rank">3rd</div>
       <div class="aw-title">Management Business Competition (MBION)</div>
       <div class="aw-org">HMJ Management, UNESA · 2024</div>
     </a>
-    
-    <!-- AWARDS 18th & 9th FULL KESAMPING -->
-    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card aw-card-full">
+  </div>
+  
+  <div class="aw-grid-half">
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card scroll-anim">
       <div class="aw-rank">18th</div>
-      <div class="aw-details">
-        <div class="aw-title">National Senior High School Mathematics Olympiad</div>
-        <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2021</div>
-      </div>
+      <div class="aw-title">National Senior High School Mathematics Olympiad</div>
+      <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2021</div>
     </a>
-    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card aw-card-full">
+    <a href="dokumen_penghargaan.pdf" target="_blank" class="aw-card scroll-anim">
       <div class="aw-rank">9th</div>
-      <div class="aw-details">
-        <div class="aw-title">National Senior High School Economics Olympiad</div>
-        <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2020</div>
-      </div>
+      <div class="aw-title">National Senior High School Economics Olympiad</div>
+      <div class="aw-org">Club Olimpiade Universitas Sumatera Utara · 2020</div>
     </a>
   </div>
 
   <div class="ac-header">Certifications</div>
   <div class="aw-grid">
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">B2</div>
-      <div class="aw-title">EF SET English Certificate</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
+      <div class="aw-title">EF SET English Certificate (B2)</div>
       <div class="aw-org">Upper Intermediate · 2025</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">SEO</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Search Engine Optimization</div>
       <div class="aw-org">eMarketing Institute · 2025</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">PM</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Product Management Certification</div>
       <div class="aw-org">Ioda Academy · 2024</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">ENT</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Bootcamp Unesa Kewirausahaan</div>
       <div class="aw-org">Universitas Negeri Surabaya · 2025</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">SMM</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Social Media Marketing</div>
       <div class="aw-org">eMarketing Institute · 2025</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">ENT</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Entrepreneurship Course</div>
       <div class="aw-org">HP LIFE · 2024</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">DM</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Job Connector Digital Marketing</div>
       <div class="aw-org">Luarsekolah · 2024</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">EM</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Email and WhatsApp Marketing</div>
       <div class="aw-org">MySkill · 2024</div>
     </a>
-    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card">
-      <div class="aw-rank">DM</div>
+    <a href="dokumen_sertifikat.pdf" target="_blank" class="aw-card aw-card-cert scroll-anim">
       <div class="aw-title">Intro to Digital Marketing</div>
       <div class="aw-org">RevoU · 2024</div>
     </a>
@@ -745,7 +964,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
     <div>
       <div class="s-label">Capabilities</div>
       <div class="s-title" style="margin-bottom:2rem">Skills</div>
-      <div class="sk-group">
+      <div class="sk-group scroll-anim">
         <div class="sk-cat">Marketing & Digital</div>
         <div class="sk-pills">
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/google/000000" alt="Digital Marketing"> Digital Marketing</span>
@@ -761,7 +980,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/capcut/000000" alt="CapCut"> CapCut</span>
         </div>
       </div>
-      <div class="sk-group">
+      <div class="sk-group scroll-anim">
         <div class="sk-cat">Business & Tools</div>
         <div class="sk-pills">
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/shopee/000000" alt="E-Commerce"> E-Commerce</span>
@@ -774,7 +993,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
           <span class="sk-pill"><img src="https://cdn.simpleicons.org/notion/000000" alt="Notion"> Notion</span>
         </div>
       </div>
-      <div class="sk-group">
+      <div class="sk-group scroll-anim">
         <div class="sk-cat">Soft Skills</div>
         <div class="sk-pills">
           <span class="sk-pill">Leadership</span>
@@ -788,17 +1007,18 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
         </div>
       </div>
     </div>
-    <div class="sk-right">
-      <div class="sk-quote">"Every day is a chance to <span style="color:var(--pink)">upgrade.</span>"</div>
+    <div class="sk-right scroll-anim" style="margin-top:0;">
+      <div class="sk-cat" style="margin-bottom:1rem;">Languages</div>
       <div class="lang-row"><span class="lang-name">Indonesian</span><span class="lang-tag">Native</span></div>
-      <div class="lang-row"><span class="lang-name">English</span><span class="lang-tag">B2 — Upper Intermediate</span></div>
+      <div class="lang-row" style="border-bottom:none;"><span class="lang-name">English</span><span class="lang-tag">B2 — Upper Intermediate</span></div>
+      <div class="sk-quote">"Every day is a chance to <span style="color:var(--pink)">upgrade.</span>"</div>
     </div>
   </div>
 </section>
 
 <!-- CV DOWNLOAD CTA -->
 <div class="cv-cta-section" id="cv-section">
-  <div class="cv-cta-box">
+  <div class="cv-cta-box scroll-anim">
     <div class="cv-cta-icon">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -818,11 +1038,11 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 
 <section id="contact">
   <div class="ct-wrap">
-    <div class="ct-left">
+    <div class="ct-left scroll-anim">
       <h2>Let's build something together.</h2>
-      <p>Looking for a marketing intern or collaborator? Let's talk — I'm open to roles in Surabaya or remote.</p>
+      <p>Looking for a job, intern or collaborator? Let's talk — I'm open to full-time roles in Surabaya or remote opportunities.</p>
     </div>
-    <div class="ct-right">
+    <div class="ct-right scroll-anim">
       <div class="ct-links">
         <a href="mailto:kharinarifdahh@gmail.com" class="ct-link">
           <div>
@@ -832,7 +1052,6 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
             </div>
             <div class="ct-val">kharinarifdahh@gmail.com</div>
           </div>
-          <span class="ct-arrow">→</span>
         </a>
         <a href="https://linkedin.com/in/kharinarifdahhidayah" target="_blank" class="ct-link">
           <div>
@@ -842,7 +1061,6 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
             </div>
             <div class="ct-val">linkedin.com/in/kharinarifdahhidayah</div>
           </div>
-          <span class="ct-arrow">↗</span>
         </a>
         <a href="https://kharinarifdahhidayah.my.canva.site/portfolio" target="_blank" class="ct-link">
           <div>
@@ -852,7 +1070,6 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
             </div>
             <div class="ct-val">kharinarifdahhidayah.my.canva.site/portfolio</div>
           </div>
-          <span class="ct-arrow">↗</span>
         </a>
         <a href="https://wa.me/62895364757818" target="_blank" class="ct-link">
           <div>
@@ -862,7 +1079,6 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
             </div>
             <div class="ct-val">+62 8953 6475 7818</div>
           </div>
-          <span class="ct-arrow">→</span>
         </a>
       </div>
       <div class="avail">
@@ -875,7 +1091,7 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
 
 <footer>
   <span class="f-name">Kharina Rifdah Hidayah</span>
-  <span class="f-copy">© 2026 Marketing Portfolio</span>
+  <span class="f-copy">© 2026 Portfolio</span>
 </footer>
 
 <!-- WHATSAPP FLOATING BUTTON -->
@@ -885,19 +1101,92 @@ footer{background:#050508;padding:2rem 3rem;display:flex;justify-content:space-b
   </svg>
 </a>
 
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTop" title="Go to top">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
 <script>
-const els = document.querySelectorAll('.exp-item, .proj-card, .aw-card, .metric, .about-card, .about-right, .stat-item, .cv-cta-box');
+// Fade-in Intersection Observer
+const els = document.querySelectorAll('.scroll-anim');
 const io = new IntersectionObserver(entries => {
   entries.forEach((e,i) => {
     if(e.isIntersecting){
-      setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)'},i*60);
+      e.target.style.animation = `fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) ${i*0.1}s forwards`;
+      io.unobserve(e.target);
     }
   });
 },{threshold:.08});
 els.forEach(el=>{
-  el.style.opacity='0';el.style.transform='translateY(20px)';
-  el.style.transition='opacity .55s ease, transform .55s ease';
+  el.style.opacity='0';
   io.observe(el);
+});
+
+// Lightbox Logic for Images & Texts
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxText = document.getElementById('lightbox-text-wrapper');
+const captionText = document.getElementById('lightbox-caption');
+const closeLightbox = document.querySelector('.lightbox-close');
+
+// For Images
+const designItems = document.querySelectorAll('.design-item img');
+designItems.forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+        lightbox.classList.add("show");
+        lightboxImg.style.display = 'block';
+        lightboxText.style.display = 'none';
+        lightboxImg.src = img.src;
+        captionText.innerHTML = img.alt;
+    });
+});
+
+const docCards = document.querySelectorAll('.doc-card');
+docCards.forEach(card => {
+    card.addEventListener('click', () => {
+        lightbox.classList.add("show");
+        lightboxImg.style.display = 'block';
+        lightboxText.style.display = 'none';
+        lightboxImg.src = card.getAttribute('data-img') || "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800"; 
+        captionText.innerHTML = card.querySelector('.doc-title').innerText;
+    });
+});
+
+// For Testimonial Texts
+const testiCards = document.querySelectorAll('.testi-card');
+testiCards.forEach(card => {
+    card.addEventListener('click', () => {
+        lightbox.classList.add("show");
+        lightboxImg.style.display = 'none';
+        lightboxText.style.display = 'block';
+        lightboxText.innerHTML = card.getAttribute('data-fulltext');
+        captionText.innerHTML = card.querySelector('.testi-author').innerText;
+    });
+});
+
+closeLightbox.addEventListener('click', () => {
+    lightbox.classList.remove("show");
+});
+
+lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) { lightbox.classList.remove("show"); }
+});
+
+// Back to Top Logic
+const backToTopBtn = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    backToTopBtn.classList.add("show");
+  } else {
+    backToTopBtn.classList.remove("show");
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 </script>
 </body>
